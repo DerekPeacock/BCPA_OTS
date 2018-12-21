@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BCPA_OTS.Models
 {
@@ -25,6 +26,7 @@ namespace BCPA_OTS.Models
     /// </summary>
     public class Address
     {
+        [ForeignKey("Person")]
         public int AddressID { get; set; }
 
         public string House { get; set; }
