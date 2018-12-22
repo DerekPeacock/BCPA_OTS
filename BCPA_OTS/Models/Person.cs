@@ -16,7 +16,7 @@ namespace BCPA_OTS.Models
         /// 
         /// DSS
         /// </summary>
-        public int CustomerID { get; set; }
+        public int PersonID { get; set; }
         
         /// <summary>
         /// Foreign Key
@@ -86,7 +86,9 @@ namespace BCPA_OTS.Models
             throw new System.Exception("Not implemented");
         }
 
-        //public virtual Address Address;
+        public virtual Address Address { get; set; }
+        public virtual PaymentCard PaymentCard { get; set; }
+
         //public virtual Purchase[] Purchases;
         //public virtual Staff staff;
     }

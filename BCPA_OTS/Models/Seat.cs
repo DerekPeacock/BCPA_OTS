@@ -14,9 +14,9 @@ namespace BCPA_OTS.Models
 
         public bool AisleSeat { get; set; }
 
-        private Venue venue;
+        //private Venue venue;
 
-        private Ticket[] tickets;
+        //private Ticket[] tickets;
 
     }
 }

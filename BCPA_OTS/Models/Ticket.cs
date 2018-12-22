@@ -12,7 +12,7 @@ namespace BCPA_OTS.Models
     {
         public int TicketID { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime PurchaseDate { get; set; }
 
         public bool Event { get; set; }
 
@@ -20,7 +20,7 @@ namespace BCPA_OTS.Models
 
         public decimal Price { get; set; }
 
-        public string VenueID { get; set; }
+        public string SeatID { get; set; }
 
         /// <summary>
         /// When the customer buys the ticket
@@ -32,9 +32,7 @@ namespace BCPA_OTS.Models
             throw new System.Exception("Not implemented");
         }
 
-        //private Seat seat;
-
-        public virtual Venue Venue { get; set; }
+        public virtual Seat seat { get; set; }
 
         //private Agent agent;
 

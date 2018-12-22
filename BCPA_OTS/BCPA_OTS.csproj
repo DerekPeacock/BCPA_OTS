@@ -211,6 +211,7 @@
     <Compile Include="Models\PaymentCard.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PricingStructure.cs" />
+    <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\Show.cs" />
     <Compile Include="Models\Staff.cs" />
