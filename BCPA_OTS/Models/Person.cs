@@ -37,7 +37,7 @@ namespace BCPA_OTS.Models
         public string UserID { get; set; }
 
         /// <summary>
-        /// This is the unique name the agent has to login to the system and access/sell tickets.
+        /// This is the unique name the customer has to login to the system and access/sell tickets.
         /// </summary>
         public string Username { get; set; }
 
