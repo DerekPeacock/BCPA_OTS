@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BCPA_OTS.Models
 {
@@ -16,6 +18,7 @@ namespace BCPA_OTS.Models
         /// 
         /// DSS
         /// </summary>
+        [Key]
         public int PersonID { get; set; }
         
         /// <summary>
@@ -26,7 +29,7 @@ namespace BCPA_OTS.Models
         /// 
         /// DSS
         /// </summary>
-        public int AddressID { get; set; }
+        //public int AddressID { get; set; }
         
         /// <summary>
         /// Foreign Key
@@ -34,18 +37,19 @@ namespace BCPA_OTS.Models
         /// 
         /// DSS
         /// </summary>
-        public string UserID { get; set; }
+        //public string UserID { get; set; }
 
         /// <summary>
         /// This is the unique name the customer has to login to the system and access/sell tickets.
         /// </summary>
-        public string Username { get; set; }
+        //public string Username { get; set; }
 
         /// <summary>
         /// Used to identify the customer
         /// 
         /// DSS
         /// </summary>
+        [StringLength(20), Required]
         public string FirstName { get; set; }
 
         /// <summary>
@@ -53,13 +57,15 @@ namespace BCPA_OTS.Models
         /// 
         /// DSS
         /// </summary>
-        public string SurName { get; set; }
+        [StringLength(20), Required]
+        public string LastName { get; set; }
 
         /// <summary>
         /// Used to contact the customer
         /// 
         /// DSS
         /// </summary>
+        [StringLength(100), Required]
         public string Email { get; set; }
 
         /// <summary>
@@ -67,29 +73,24 @@ namespace BCPA_OTS.Models
         /// 
         /// DSS
         /// </summary>
+        [StringLength(20), Required]
         public string PhoneNumber { get; set; }
 
  
-        public int PaymentCardID { get; set; }
+        //public int PaymentCardID { get; set; }
 
-
-        /// <summary>
-        /// Used to register and store the customers information so the 
-        /// customer can login using the created credentials if they 
-        /// haven't already registered, as well as so the address can 
-        /// be stored so tickets and promotions can be sent
-        /// 
-        /// DSS
-        /// </summary>
-        public void RegisterCustomer()
+        public string FullName
         {
-            throw new System.Exception("Not implemented");
+            get { return FirstName + " " + LastName; }
         }
 
+        // Navigation Properties
+
         public virtual Address Address { get; set; }
+
         public virtual PaymentCard PaymentCard { get; set; }
 
-        //public virtual Purchase[] Purchases;
-        //public virtual Staff staff;
+        public virtual ICollection<Purchase> Purchases { get; set; }
+
     }
 }

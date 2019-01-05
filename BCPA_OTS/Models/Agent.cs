@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace BCPA_OTS.Models
 {
     /// <summary>
@@ -11,15 +13,21 @@ namespace BCPA_OTS.Models
     /// to the one that the venue is located in and sell a set number of 
     /// tickets to customers who come to their business.
     /// </summary>
-    public class Agent
+    public class Agent : Person
     {
-        public int AgentID { get; set; }
-
         public int SeatRange { get; set; }
 
-        public DateTime DateRange { get; set; }
+        [DataType(DataType.Date), 
+            DisplayFormat(DataFormatString ="{0:dd/mm/yyyy}", 
+            ApplyFormatInEditMode = true)]
+        public DateTime StartDate { get; set; }
 
-        public Ticket[] tickets;
+        [DataType(DataType.Date),
+            DisplayFormat(DataFormatString = "{0:dd/mm/yyyy}",
+            ApplyFormatInEditMode = true)]
+        public DateTime EndDate { get; set; }
+
+        
 
     }
 }

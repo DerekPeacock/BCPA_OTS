@@ -1,18 +1,27 @@
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace BCPA_OTS.Models
 {
-    public class Staff
+    public enum BCPA_Departments
     {
-        [ForeignKey("Person")]
-        public int StaffID { get; set; }
+        Sales,
+        Finance,
+        Support,
+        Catering
+    }
 
+    public class Staff : Person
+    {
+        [StringLength(20), Required]
         public string JobRole { get; set; }
 
-        public string Department { get; set; }
+        public BCPA_Departments Department { get; set; }
 
-        public Person Person { get; set; }
+        [DataType(DataType.Currency),
+         DisplayFormat(DataFormatString = "{0:c}", 
+            ApplyFormatInEditMode = false)]
+        public decimal Salary { get; set; }
 
     }
 }

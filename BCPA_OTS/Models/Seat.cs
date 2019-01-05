@@ -3,6 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BCPA_OTS.Models
 {
+    public enum SeatTypes
+    {
+        Orchestra,
+        Stalls,
+        Back
+    }
+
+    public enum SeatStatus
+    {
+        Available, Hold, Sold
+    }
+
     /// <summary>
     /// William Foster
     /// </summary>
@@ -13,26 +25,46 @@ namespace BCPA_OTS.Models
         /// each seat that combines its seat and row 
         /// number.
         /// </summary>
-        public string SeatID { get; set; }
+        public int SeatID { get; set; }
+
+        [Range(1,20)]
+        public int RowNo { get; set; }
+
+
+        [Range(1,20)]
+        public int SeatNo { get; set; }
 
         /// <summary>
         /// A specification of seat that each one will 
         /// have. The types are: Orchestra, Stall and 
         /// Back seat.
         /// </summary>
-        [Required, StringLength(10), Display(Name ="Seat Type")]
-        public string Type { get; set; }
+        [Display(Name ="Seat Type")]
+        public SeatTypes SeatType { get; set; }
+
 
         /// <summary>
         /// A true of false statement which states whether or not
         /// the seat is an aisle seat or not
         /// </summary>
         [Display(Name ="Aisle Seat")]
-        public bool AisleSeat { get; set; }
+        public bool AisleSeat
+        {
+            get { return (SeatNo == 10) || (SeatNo == 11); }
+        }
 
-        //private Venue venue;
+        public SeatStatus Status { get; set; }
 
-        //private Ticket[] tickets;
+        public string SeatRow
+        {
+            get { return "ABCDEFGHIJKLMNOPQRST".Substring(RowNo,1); }
+        }
 
+        public Seat(int row, int seat)
+        {
+            RowNo = row;
+            SeatNo = seat;
+            Status = SeatStatus.Available;
+        }
     }
 }
