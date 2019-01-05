@@ -30,8 +30,10 @@ namespace BCPA_OTS.Models
         public bool IsShow { get; set; }
 
         private Ticket[] tickets;
+
         //private PricingStructure PricingStructure;
-	    private Artist[] Artists;
+
+        private Artist[] Artists;
 
     }
 }
