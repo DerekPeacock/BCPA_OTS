@@ -9,36 +9,21 @@ namespace BCPA_OTS.Models
     /// </summary>
     public class Show
     {
-        /// <summary>
-        /// A unique number given to each show 
-        /// in order to identify it.
-        /// </summary>
         public int ShowID { get; set; }
 
         /// <summary>
-        /// A short description of the show and its
-        /// contents.
+        /// The starting date and time of the event, displayed in
+        /// a 24 hour clock format e.g. 24/09/2019 at 19:00.
         /// </summary>
-        [Required, StringLength(500)]
-        public string Description { get; set; }
+        [Required, DataType(DataType.DateTime), Display(Name = "Date of Show")]
+        [DisplayFormat(DataFormatString = "0:dd/MM/yyyy H:mm", ApplyFormatInEditMode = true)]
+        public DateTime PerformanceDate { get; set; }
 
-        /// <summary>
-        /// The Uniform Resource Locator (URL) of the
-        /// image being used in the show's decrption,
-        /// i.e. an image relevant to a specific show.
-        /// </summary>
-        [Required, StringLength(255), DataType(DataType.ImageUrl), Display(Name ="Image")]
-        public string ImageURL { get; set; }
+        // Navigation Properties
 
-        /// <summary>
-        /// The URL of the video being used in the show's 
-        /// description e.g. a trailer for the show with 
-        /// preview viewing from various venues.
-        /// </summary>
-        [Required, StringLength(255), DataType(DataType.Url), Display(Name ="Video")]
-        public string VideoURL { get; set; }
+        public Promotion Promotion { get; set; }
 
-        public virtual ICollection<Artist> Artists { get; set; }
+        public virtual ICollection<Seat> Seats { get; set; }
 
     }
 }

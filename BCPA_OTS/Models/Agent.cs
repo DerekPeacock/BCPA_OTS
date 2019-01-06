@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BCPA_OTS.Models
@@ -15,7 +16,8 @@ namespace BCPA_OTS.Models
     /// </summary>
     public class Agent : Person
     {
-        public int SeatRange { get; set; }
+        [Range(1,50)]
+        public int Comission { get; set; }
 
         [DataType(DataType.Date), 
             DisplayFormat(DataFormatString ="{0:dd/mm/yyyy}", 
@@ -27,7 +29,14 @@ namespace BCPA_OTS.Models
             ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
 
-        
+        // Navigation Properties
+
+        public virtual ICollection<Seat> Seats { get; set; }
+
+        public bool CanSell(int seatRow, int seatNo)
+        {
+            return true;
+        }
 
     }
 }

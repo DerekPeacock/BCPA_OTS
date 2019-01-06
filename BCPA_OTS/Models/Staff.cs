@@ -8,7 +8,8 @@ namespace BCPA_OTS.Models
         Sales,
         Finance,
         Support,
-        Catering
+        Catering,
+        Manager
     }
 
     public class Staff : Person

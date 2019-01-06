@@ -44,7 +44,5 @@ namespace BCPA_OTS.Models
             throw new System.Exception("Not implemented");
         }
 
-        private Venue venue;
-
     }
 }

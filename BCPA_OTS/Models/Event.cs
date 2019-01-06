@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BCPA_OTS.Models
@@ -10,6 +11,7 @@ namespace BCPA_OTS.Models
     {
         public int EventID { get; set; }
 
+        [StringLength(50)]
         public string Name { get; set; }
 
         /// <summary>
@@ -17,6 +19,7 @@ namespace BCPA_OTS.Models
         /// a 24 hour clock format e.g. 24/09/2019 at 19:00.
         /// </summary>
         [Required, DataType(DataType.DateTime), Display(Name="Date of Event")]
+        [DisplayFormat(DataFormatString ="0:dd/MM/yyyy H:mm", ApplyFormatInEditMode = true)]
         public DateTime StartDateTime { get; set; }
 
         /// <summary>
@@ -24,6 +27,7 @@ namespace BCPA_OTS.Models
         ///  measured in hours and minutes.
         /// </summary>
         [Required, DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString ="{0:H:mm}", ApplyFormatInEditMode = true)]
         public DateTime Duration { get; set; }
 
         /// <summary>
@@ -31,7 +35,7 @@ namespace BCPA_OTS.Models
         /// decrption, e.g. an image of a representative 
         /// or company attending the event.
         /// </summary>
-        [Required, StringLength(255), DataType(DataType.ImageUrl), Display(Name="Image")]
+        [Required, StringLength(100), DataType(DataType.ImageUrl), Display(Name="Image")]
         public string ImageURL { get; set; }
 
         /// <summary>
@@ -50,17 +54,7 @@ namespace BCPA_OTS.Models
         [Required, StringLength(500)]
         public string Description { get; set; }
 
-        /// <summary>
-        /// A true or false statement that identifies 
-        /// the event as a show or an event.
-        /// </summary>
-        public bool IsShow { get; set; }
-
-        private Ticket[] tickets;
-
-        //private PricingStructure PricingStructure;
-
-        private Artist[] Artists;
+        public virtual ICollection<Artist> Artists { get; set; }
 
     }
 }

@@ -7,12 +7,18 @@ namespace BCPA_OTS.Models
     {
         [ForeignKey("Person")]
         public int PaymentCardID { get; set; }
+
         public int CardNumber { get; set; }
+
         public int ExpiryMonth { get; set; }
+
         public int ExpiryYear { get; set; }
+
         public string SecurityNumber { get; set; }
 
-        private Person Person;
+        // Navigation Properties
+
+        public virtual Person Person { get; set; }
 
     }
 }
