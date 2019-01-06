@@ -200,12 +200,17 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\OTS_Context.cs" />
+    <Compile Include="DAL\PeopleSeed.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901061149435_InitialCreate.cs" />
-    <Compile Include="Migrations\201901061149435_InitialCreate.Designer.cs">
-      <DependentUpon>201901061149435_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201901061503322_InititalCreate.cs" />
+    <Compile Include="Migrations\201901061503322_InititalCreate.Designer.cs">
+      <DependentUpon>201901061503322_InititalCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901061718128_AddEventToShow.cs" />
+    <Compile Include="Migrations\201901061718128_AddEventToShow.Designer.cs">
+      <DependentUpon>201901061718128_AddEventToShow.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -214,7 +219,6 @@
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PaymentCard.cs" />
     <Compile Include="Models\Person.cs" />
@@ -237,6 +241,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\BallRoomBoys.jpg" />
+    <Content Include="Images\Gaelforce.jpg" />
+    <Content Include="Images\RememberMovies.jpg" />
+    <Content Include="Images\RythmDance.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -305,8 +313,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901061149435_InitialCreate.resx">
-      <DependentUpon>201901061149435_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901061503322_InititalCreate.resx">
+      <DependentUpon>201901061503322_InititalCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901061718128_AddEventToShow.resx">
+      <DependentUpon>201901061718128_AddEventToShow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

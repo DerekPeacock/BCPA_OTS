@@ -29,6 +29,7 @@ namespace BCPA_OTS.Models
         // Navigation Properties
 
         public int PersonID { get; set; }
+
         public virtual Person Person { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }

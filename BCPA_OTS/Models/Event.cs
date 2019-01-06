@@ -19,7 +19,7 @@ namespace BCPA_OTS.Models
         /// a 24 hour clock format e.g. 24/09/2019 at 19:00.
         /// </summary>
         [Required, DataType(DataType.DateTime), Display(Name="Date of Event")]
-        [DisplayFormat(DataFormatString ="0:dd/MM/yyyy H:mm", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString ="0:yyyy/MM/dd H:mm", ApplyFormatInEditMode = true)]
         public DateTime StartDateTime { get; set; }
 
         /// <summary>
@@ -27,8 +27,8 @@ namespace BCPA_OTS.Models
         ///  measured in hours and minutes.
         /// </summary>
         [Required, DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString ="{0:H:mm}", ApplyFormatInEditMode = true)]
-        public DateTime Duration { get; set; }
+        [DisplayFormat(DataFormatString ="{0:yyyy/MM/dd H:mm}", ApplyFormatInEditMode = true)]
+        public DateTime EndTime { get; set; }
 
         /// <summary>
         /// The URL of the image being used in the event's 

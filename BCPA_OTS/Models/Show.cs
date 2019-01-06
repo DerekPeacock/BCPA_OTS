@@ -21,6 +21,9 @@ namespace BCPA_OTS.Models
 
         // Navigation Properties
 
+        public int EventID { get; set; }
+        public Event Event { get; set; }
+
         public Promotion Promotion { get; set; }
 
         public virtual ICollection<Seat> Seats { get; set; }

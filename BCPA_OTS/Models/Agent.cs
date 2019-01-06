@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BCPA_OTS.Models
 {
@@ -14,8 +15,12 @@ namespace BCPA_OTS.Models
     /// to the one that the venue is located in and sell a set number of 
     /// tickets to customers who come to their business.
     /// </summary>
-    public class Agent : Person
+    public class Agent
     {
+        [Key]
+        [ForeignKey("Person")]
+        public int AgentID { get; set; }
+
         [Range(1,50)]
         public int Comission { get; set; }
 
@@ -31,7 +36,10 @@ namespace BCPA_OTS.Models
 
         // Navigation Properties
 
+        public virtual Person Person { get; set; }
+
         public virtual ICollection<Seat> Seats { get; set; }
+
 
         public bool CanSell(int seatRow, int seatNo)
         {
