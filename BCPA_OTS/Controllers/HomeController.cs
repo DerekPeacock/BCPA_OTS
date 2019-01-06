@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BCPA_OTS.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,12 @@ namespace BCPA_OTS.Controllers
 {
     public class HomeController : Controller
     {
+        private OTS_Context db = new OTS_Context();
+
         public ActionResult Index()
         {
-            return View();
+            var shows = db.Events.ToList();
+            return View(shows);
         }
 
         public ActionResult About()

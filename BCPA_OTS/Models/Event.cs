@@ -19,7 +19,7 @@ namespace BCPA_OTS.Models
         /// a 24 hour clock format e.g. 24/09/2019 at 19:00.
         /// </summary>
         [Required, DataType(DataType.DateTime), Display(Name="Date of Event")]
-        [DisplayFormat(DataFormatString ="0:yyyy/MM/dd H:mm", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString ="{0:yyyy/MM/dd H:mm}", ApplyFormatInEditMode = true)]
         public DateTime StartDateTime { get; set; }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace BCPA_OTS.Models
         /// A short description of the event 
         /// and its contents.
         /// </summary>
-        [Required, StringLength(500)]
+        [Required, StringLength(500), DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         public virtual ICollection<Artist> Artists { get; set; }
