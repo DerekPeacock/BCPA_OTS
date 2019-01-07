@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201901061718128_AddEventToShow.Designer.cs">
       <DependentUpon>201901061718128_AddEventToShow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901071949542_AddShowToSeat.cs" />
+    <Compile Include="Migrations\201901071949542_AddShowToSeat.Designer.cs">
+      <DependentUpon>201901071949542_AddShowToSeat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -301,6 +305,8 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Home\Show.cshtml" />
+    <Content Include="Views\Home\Book.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901061718128_AddEventToShow.resx">
       <DependentUpon>201901061718128_AddEventToShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901071949542_AddShowToSeat.resx">
+      <DependentUpon>201901071949542_AddShowToSeat.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

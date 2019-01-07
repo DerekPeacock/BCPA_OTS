@@ -24,6 +24,69 @@ namespace BCPA_OTS.Migrations
 
             SeedPeople(context);
             SeedEvents(context);
+            SeedShows(context);
+            SeedSeats(context);
+        }
+
+        private void SeedSeats(OTS_Context context)
+        {
+            // Show 1 for Event 1
+
+            var seatList = new List<Seat>();
+            int id = 1;
+
+            for(int row = 1; row <= 20; row++)
+            {
+                for(int col = 1; col <= 20; col++)
+                {
+                    Seat seat = new Seat(row, col);
+                    seat.SeatID = id; id++ ;
+
+                    if (row <= 2)
+                        seat.SeatType = SeatTypes.Orchestra;
+                    else if (row <= 10)
+                        seat.SeatType = SeatTypes.Stalls;
+                    else
+                        seat.SeatType = SeatTypes.Back;
+
+                    seat.ShowID = 1;
+                    seat.Status = SeatStatus.Available;
+
+                    seatList.Add(seat);
+                }
+            }
+
+            seatList.ForEach(s => context.Seats.AddOrUpdate(i => i.SeatID, s));
+            context.SaveChanges();
+        }
+
+        private void SeedShows(OTS_Context context)
+        {
+            var showList = new List<Show>
+            {
+                // Event 1 Gaelforce (3 Shows/Performances)
+                new Show
+                {
+                    ShowID = 1,
+                    EventID = 1,
+                    PerformanceDate = new DateTime(2019, 2, 18, 19, 30, 0),
+                },
+                new Show
+                {
+                    ShowID = 2,
+                    EventID = 1,
+                    PerformanceDate = new DateTime(2019, 2, 20, 19, 30, 0),
+                },
+                new Show
+                {
+                    ShowID = 3,
+                    EventID = 1,
+                    PerformanceDate = new DateTime(2019, 2, 22, 19, 30, 0),
+                }
+            };
+
+            showList.ForEach(s => context.Shows.AddOrUpdate(i => i.PerformanceDate, s));
+            context.SaveChanges();
         }
 
         private void SeedEvents(OTS_Context context)

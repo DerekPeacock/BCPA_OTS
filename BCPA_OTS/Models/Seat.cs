@@ -42,6 +42,11 @@ namespace BCPA_OTS.Models
         [Display(Name ="Seat Type")]
         public SeatTypes SeatType { get; set; }
 
+        // Navigation Property
+
+        public int ShowID { get; set; }
+
+        public virtual Show Show { get; set; }
 
         /// <summary>
         /// A true of false statement which states whether or not
@@ -60,11 +65,19 @@ namespace BCPA_OTS.Models
             get { return "ABCDEFGHIJKLMNOPQRST".Substring(RowNo,1); }
         }
 
+        public Seat()
+        {
+            RowNo = 0;
+            SeatNo = 0;
+        }
+
         public Seat(int row, int seat)
         {
+            this.
             RowNo = row;
             SeatNo = seat;
             Status = SeatStatus.Available;
         }
+
     }
 }

@@ -1,0 +1,14 @@
+﻿@model BCPA_OTS.Models.Show
+
+@{
+    ViewBag.Title = "Book";
+}
+
+<header class="jumbotron">
+    <h1>Bucks Center <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Performing Arts</h1>
+    <h1>@Model.Event.Name</h1>
+    <p>
+        @Html.DisplayFor(model => model.Event.Description)
+    </p>
+</header>
+

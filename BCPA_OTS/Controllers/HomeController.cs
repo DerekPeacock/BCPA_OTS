@@ -1,9 +1,7 @@
 ﻿using BCPA_OTS.DAL;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace BCPA_OTS.Controllers
 {
@@ -15,6 +13,29 @@ namespace BCPA_OTS.Controllers
         {
             var shows = db.Events.ToList();
             return View(shows);
+        }
+
+
+        [HttpGet]
+        public ActionResult Show(int id)
+        {
+            ViewBag.Message = "View the details of a selected event/show!";
+
+            var show = db.Events.Find(id);
+
+            return View(show);
+        }
+
+        [HttpGet]
+        public ActionResult Book(int id)
+        {
+            ViewBag.Message = "Book seats for a selected show!";
+
+            var show = db.Shows.Include(s => s.Event)
+                .Where(e => e.ShowID == id)
+                .FirstOrDefault();
+
+            return View(show);
         }
 
         public ActionResult About()

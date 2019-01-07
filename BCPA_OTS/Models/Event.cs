@@ -18,8 +18,8 @@ namespace BCPA_OTS.Models
         /// The starting date and time of the event, displayed in
         /// a 24 hour clock format e.g. 24/09/2019 at 19:00.
         /// </summary>
-        [Required, DataType(DataType.DateTime), Display(Name="Date of Event")]
-        [DisplayFormat(DataFormatString ="{0:yyyy/MM/dd H:mm}", ApplyFormatInEditMode = true)]
+        [Required, DataType(DataType.DateTime), Display(Name = "Date of Event")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd H:mm}", ApplyFormatInEditMode = true)]
         public DateTime StartDateTime { get; set; }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace BCPA_OTS.Models
         ///  measured in hours and minutes.
         /// </summary>
         [Required, DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString ="{0:yyyy/MM/dd H:mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd H:mm}", ApplyFormatInEditMode = true)]
         public DateTime EndTime { get; set; }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace BCPA_OTS.Models
         /// decrption, e.g. an image of a representative 
         /// or company attending the event.
         /// </summary>
-        [Required, StringLength(100), DataType(DataType.ImageUrl), Display(Name="Image")]
+        [Required, StringLength(100), DataType(DataType.ImageUrl), Display(Name = "Image")]
         public string ImageURL { get; set; }
 
         /// <summary>
@@ -55,6 +55,8 @@ namespace BCPA_OTS.Models
         public string Description { get; set; }
 
         public virtual ICollection<Artist> Artists { get; set; }
+
+        public virtual ICollection<Show> Shows { get; set; }
 
     }
 }

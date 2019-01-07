@@ -1,0 +1,64 @@
+﻿@model BCPA_OTS.Models.Event
+@using BCPA_OTS.Models
+
+@{
+    ViewBag.Title = "Show";
+}
+<header class="jumbotron">
+    <h1>Bucks Center <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Performing Arts</h1>
+    <h1>@Model.Name</h1>
+    <p>
+        @Html.DisplayFor(model => model.Description)
+    </p>
+</header>
+
+<main>
+    <figure>
+        <img class="img-responsive" src="~/Images/@Model.ImageURL" alt="Image of Show" />
+        <figcaption class="text-center">@Model.Name</figcaption>
+    </figure>    
+    <br/>
+
+    <h2>@Model.StartDateTime.DayOfWeek @Model.StartDateTime.ToLongDateString()</h2>
+    <h3>Show Starts: @Model.StartDateTime.ToString("H:mm")</h3>
+    
+   @if(Model.Shows.Count > 0)
+   {
+    <div class="row">
+        <div class="col-lg-8">
+            <table class="table table-bordered">
+                <tr class="bg-info">
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Availability</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <th>@Model.StartDateTime.DayOfWeek @Model.StartDateTime.ToLongDateString()</th>
+                    <th>@Model.StartDateTime.ToShortTimeString()</th>
+                    <th>Booking</th>
+                    <th><a class="btn btn-success" href="~/Home/Book/@Model.EventID">Book Seats</a></th>
+                </tr>
+                @foreach (Show show in Model.Shows)
+                {
+                    <tr>
+                        <th>@show.PerformanceDate.DayOfWeek @show.PerformanceDate.ToLongDateString()</th>
+                        <th>@show.PerformanceDate.ToShortTimeString()</th>
+                        <th>Booking</th>
+                        <th><a class="btn btn-success" href="~/Home/Book/@show.ShowID">Book Seats</a></th>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="col-lg-4">
+
+        </div>
+    </div>
+
+   }
+
+    <p>
+        @Html.ActionLink("<< Back to Whats On", "Index", null, new { @class = "btn btn-info" })
+    </p>
+</main>
+
