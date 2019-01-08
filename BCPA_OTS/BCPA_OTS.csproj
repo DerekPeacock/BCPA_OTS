@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201901071949542_AddShowToSeat.Designer.cs">
       <DependentUpon>201901071949542_AddShowToSeat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901082002382_AddPrices.cs" />
+    <Compile Include="Migrations\201901082002382_AddPrices.Designer.cs">
+      <DependentUpon>201901082002382_AddPrices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -242,6 +246,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\BucksStyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -333,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901071949542_AddShowToSeat.resx">
       <DependentUpon>201901071949542_AddShowToSeat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901082002382_AddPrices.resx">
+      <DependentUpon>201901082002382_AddPrices.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

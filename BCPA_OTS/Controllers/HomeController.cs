@@ -1,4 +1,5 @@
 ﻿using BCPA_OTS.DAL;
+using BCPA_OTS.Models;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
@@ -31,9 +32,14 @@ namespace BCPA_OTS.Controllers
         {
             ViewBag.Message = "Book seats for a selected show!";
 
-            var show = db.Shows.Include(s => s.Event)
+            Promotion promotion = new Promotion();
+
+            var show = db.Shows
+                .Include(s => s.Event)
                 .Where(e => e.ShowID == id)
                 .FirstOrDefault();
+
+            show.Promotion = promotion;
 
             return View(show);
         }

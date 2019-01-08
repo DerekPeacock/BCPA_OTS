@@ -62,7 +62,7 @@ namespace BCPA_OTS.Models
 
         public string SeatRow
         {
-            get { return "ABCDEFGHIJKLMNOPQRST".Substring(RowNo,1); }
+            get { return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".Substring(RowNo - 1, 1); }
         }
 
         public Seat()
