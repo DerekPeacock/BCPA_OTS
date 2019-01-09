@@ -3,6 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BCPA_OTS.Models
 {
+    public enum CustomerTypes
+    {
+        Adult,
+        Child,
+        Senior,
+        Student
+    }
+
     public class Promotion
     {
         public int PromotionID { get; set; }
@@ -33,6 +41,42 @@ namespace BCPA_OTS.Models
 
         [Range(0, 100, ErrorMessage = "Must be a % between 0 and 90")]
         public int SeniorDiscount { get; set; }
+
+        public decimal GetPrice(CustomerTypes customerType, SeatTypes seatType)
+        {
+            decimal price = 0;
+
+            switch (seatType)
+            {
+                case SeatTypes.Stalls:
+                    price = StallPrice;
+                    break;
+                case SeatTypes.Orchestra:
+                    price = OrchestraPrice;
+                    break;
+                case SeatTypes.Back:
+                    price = BackPrice;
+                    break;
+            }
+
+            switch(customerType)
+            {
+                case CustomerTypes.Adult:
+                    price = price - price * (decimal)AdultDiscount / 100.0m;
+                    break;
+                case CustomerTypes.Child:
+                    price = price - price * (decimal)ChildDiscount / 100.0m;
+                    break;
+                case CustomerTypes.Senior:
+                    price = price - price * (decimal)SeniorDiscount / 100.0m;
+                    break;
+                case CustomerTypes.Student:
+                    price = price - price * (decimal)StudentDiscount / 100.0m;
+                    break;
+            }
+
+            return price;
+        }
 
         public Promotion()
         {

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BCPA_OTS.Models.Seat>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Show.ShowID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RowNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Show.ShowID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RowNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SeatID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SeatID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SeatID })
+        </td>
+    </tr>
+}
+
+</table>

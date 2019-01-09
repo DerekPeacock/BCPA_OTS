@@ -44,6 +44,43 @@ namespace BCPA_OTS.Controllers
             return View(show);
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Book([Bind(Include = "SeatID,RowNo,SeatNo,SeatType,ShowID,Status")] Seat seat)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(seat).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Book");
+        //    }
+        //    return RedirectToAction("Book");
+        //}
+
+
+        public ActionResult BookSeat(int showID, int seatID)
+        {
+            Seat seat = db.Seats.Find(seatID);
+
+            if (seat.Status == SeatStatus.Available)
+            {
+                seat.Status = SeatStatus.Hold;
+            }
+            else if(seat.Status == SeatStatus.Hold)
+            {
+                seat.Status = SeatStatus.Available;
+            }
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(seat).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Book", new { id = showID });
+            }
+
+            return RedirectToAction("Book", new { id = showID });
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

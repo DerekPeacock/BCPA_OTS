@@ -2,7 +2,6 @@
 @using BCPA_OTS.Models
 @{
     ViewBag.Title = "Book";
-    decimal adult, child, senior, student;
 }
 
 <header class="jumbotron">
@@ -21,6 +20,8 @@
 
             @foreach (Seat seat in Model.Seats)
             {
+                string seatNo = seat.SeatRow + seat.SeatNo;
+
                 if (seat.SeatNo == 1)
                 {
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -28,11 +29,15 @@
 
                 if (seat.Status == SeatStatus.Available)
                 {
-                    <a class="seat seat-available" href="#" title="@seat.SeatRow@seat.SeatNo"></a>
+                    @Html.ActionLink(" ", "BookSeat", new { showID = Model.ShowID, seatID = seat.SeatID },
+                        new { @class = "seat seat-available", title = seatNo });
+                    @*<a class="seat seat-available" href="#" title="@seat.SeatRow@seat.SeatNo"></a>*@
                 }
                 else if (seat.Status == SeatStatus.Hold)
                 {
-                    <a class="seat seat-held" href="#" title="@seat.SeatRow@seat.SeatNo"></a>
+                    @Html.ActionLink(" ", "BookSeat", new { showID = Model.ShowID, seatID = seat.SeatID },
+                        new { @class = "seat seat-held", title = seatNo });
+                    @*<a class="seat seat-held" href="#" title="@seat.SeatRow@seat.SeatNo"></a>*@
                 }
                 else
                 {
@@ -54,30 +59,68 @@
     </div>
     <div class="col-lg-5">
         <img class="img-responsive" src="~/Images/@Model.Event.ImageURL" alt="Image of Show" />
-        <h2>Stall Ticket Prices</h2>
+        <h2>Ticket Prices</h2>
         <h3>Promotion: @Model.Promotion.Name</h3>
-        @{
-            adult = Model.Promotion.StallPrice - Model.Promotion.StallPrice * (decimal)Model.Promotion.AdultDiscount / 100.00m;
-            child = Model.Promotion.StallPrice - Model.Promotion.StallPrice * (decimal)Model.Promotion.ChildDiscount / 100.00m;
-            student = Model.Promotion.StallPrice - Model.Promotion.StallPrice * (decimal)Model.Promotion.StudentDiscount / 100.00m;
-            senior = Model.Promotion.StallPrice - Model.Promotion.StallPrice * (decimal)Model.Promotion.SeniorDiscount / 100.00m;
-        }
-        <p>
-            Stalls Adult Price: @adult.ToString("c")
-        </p>
-        <p>
-            Stalls Child Price: @child.ToString("c")
-        </p>
-        <p>
-            Stalls Senior Price: @senior.ToString("c")
-        </p>
-        <p>
-            Stalls Student Price: @student.ToString("c")
-        </p>
+        <table class="table table-bordered">
+            <tr class="bg-info">
+                <th>Customer</th>
+                <th>Orchestra</th>
+                <th>Stall Seat</th>
+                <th>Back Seat</th>
+            </tr>
+            <tr>
+                <td>Adult</td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Adult, SeatTypes.Orchestra).ToString("c")
+                </td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Adult, SeatTypes.Stalls).ToString("c")
+                </td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Adult, SeatTypes.Back).ToString("c")
+                </td>
+            </tr>
+            <tr>
+                <td>Child</td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Child, SeatTypes.Orchestra).ToString("c")
+                </td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Child, SeatTypes.Stalls).ToString("c")
+                </td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Child, SeatTypes.Back).ToString("c")
+                </td>
+            </tr>
+            <tr>
+                <td>Student</td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Student, SeatTypes.Orchestra).ToString("c")
+                </td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Student, SeatTypes.Stalls).ToString("c")
+                </td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Student, SeatTypes.Back).ToString("c")
+                </td>
+            </tr>
+            <tr>
+                <td>Senior</td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Senior, SeatTypes.Orchestra).ToString("c")
+                </td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Senior, SeatTypes.Stalls).ToString("c")
+                </td>
+                <td class="text-center">
+                    @Model.Promotion.GetPrice(CustomerTypes.Senior, SeatTypes.Back).ToString("c")
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 <section>
-    <p class="text-right">
+    <p class="text-center">
         @Html.ActionLink("Purchase Seats >>", "Purchase", new { id = Model.ShowID }, new { @class = "btn btn-success" })
     </p>
 </section>

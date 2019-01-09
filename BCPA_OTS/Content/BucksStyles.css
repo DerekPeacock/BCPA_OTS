@@ -7,6 +7,9 @@
     font-family: 'Courier New';
     font-size: 0.8em;
     font-weight:bold;
+    margin:1px;
+    text-decoration:none;
+    box-sizing:border-box;
 }
 
 .seat-sold
